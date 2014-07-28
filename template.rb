@@ -11,6 +11,8 @@ gsub_file 'Gemfile', /(^|\n)(\s*\n+)/, "\n"
 insert_into_file "Gemfile", "ruby '2.0.0'\n", :after => "source 'https://rubygems.org'\n"
 comment_lines 'Gemfile', "gem 'turbolinks'"
 
+gsub_file "app/views/layouts/application.html.erb", "<body>" , "<body class=\"<%= 'devise' if devise_controller? %>\">"
+
 def source_paths
   [File.expand_path(File.dirname(__FILE__))]
 end
@@ -35,7 +37,7 @@ gem 'rails_admin', github: 'sferik/rails_admin'
 gem "ckeditor"
 gem "mini_magick"
 gem "carrierwave"
-gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+gem 'carrierwave-mongoid', require: 'carrierwave/mongoid'
 gem 'cloudinary'
 gem "devise"
 gem 'devise-i18n-views'
