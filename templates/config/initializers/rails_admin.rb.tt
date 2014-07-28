@@ -1,0 +1,19 @@
+RailsAdmin.config do |config|
+  config.main_app_name = ['<%= @app_name.humanize %>']
+  config.total_columns_width = 1024
+
+  config.authenticate_with do
+    warden.authenticate! scope: :administrator
+  end
+  
+  config.current_user_method &:current_administrator
+
+  config.actions do
+    dashboard
+    index
+    new
+    edit
+    delete
+    bulk_delete
+  end
+end

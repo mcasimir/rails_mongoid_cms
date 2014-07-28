@@ -1,0 +1,9 @@
+Ckeditor::ApplicationController.class_eval do
+  prepend_before_filter do
+    warden.authenticate! scope: :administrator
+  end
+end
+
+Ckeditor.setup do |config|
+  config.assets_languages = <%= @langs_arr_str %>
+end

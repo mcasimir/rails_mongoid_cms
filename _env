@@ -1,0 +1,1 @@
+# heroku config -s | grep -E 'CLOUDINARY|MONGOLAB|MANDRILL' > .env

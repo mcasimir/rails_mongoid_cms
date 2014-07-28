@@ -1,0 +1,28 @@
+.devise {
+  margin-left: auto;
+  margin-right: auto; 
+  max-width: 600px;
+  
+  h2 {
+    .page-header;
+  }
+  
+  input[type=text], input[type=email], input[type=password] {
+    .form-control;
+    margin-bottom: @line-height-computed;
+  }
+  input[type=submit] {
+    margin-top: @line-height-computed;
+    .btn; 
+    .btn-lg; 
+    .btn-primary;
+    margin-bottom: @line-height-computed;
+  }
+
+  a[href='/users/auth/facebook'] {
+    margin-top: @line-height-computed;
+    .btn; 
+    .btn-lg;
+    .btn-primary;
+  }
+}

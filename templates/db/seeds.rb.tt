@@ -1,0 +1,3 @@
+if Administrator.empty?
+  Administrator.create!(email: "info@<%= @mail_domain %>", password: "spigola2")
+end

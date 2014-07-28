@@ -1,0 +1,91 @@
+body.rails_admin .form-horizontal.denser .control-label, body.rails_admin form .control-label {
+  display: block;
+  float: none;
+  text-align: left;
+  font-weight: bold;
+}
+
+body.rails_admin .form-horizontal.denser .control-label {
+  width: 100%;
+}
+
+body.rails_admin .nav.nav-tabs li.new_collection_link a {
+  background: rgb(133, 193, 82);
+  color: #fff;
+}
+
+body.rails_admin .nav.nav-tabs li.new_collection_link.active a {
+  background: #fff;
+  color: #000;
+}
+
+.form-horizontal .controls {
+  margin-left: 0;
+  float: none;
+}
+
+body.rails_admin .form-horizontal.denser .controls .nav {
+  height: 37px;
+  display: block !important;
+  padding-top: 10px; 
+}
+
+
+body.rails_admin .form-horizontal .tab-content .tab-pane {
+  padding-left: 20px;
+}
+
+body.rails_admin .form-horizontal .tab-content .tab-pane fieldset .control-group > label {
+  padding-left: 0;
+}
+
+
+body.rails_admin .form-horizontal .tab-content .tab-pane > .remove_nested_fields {
+  display: block;
+  position: absolute;
+  right: 20px;
+}
+
+.tab-content {
+  display: block !important;
+}
+
+.position_field {
+  display: none;
+}
+
+li.error a {
+  color: #b94a48;
+  font-weight: bold;
+}
+
+.control-group.error .control-label, .control-group.error .help-block, .control-group.error .help-inline {
+  color: #333;
+}
+
+.control-group.error > .control-label, .control-group.error > .controls .help-block, .control-group.error > .controls .help-inline {
+  color: #b94a48;
+}
+
+.control-group.error input, .control-group.error select, .control-group.error textarea {
+  border-color: #ccc;
+  color: #555;
+}
+
+.control-group.error > .controls input, .control-group.error > .controls select, .control-group.error > .controls textarea {
+  border-color: #b94a48;
+}
+
+
+.control-group.error .input-prepend .add-on, .control-group.error .input-append .add-on {
+  border-color: #ccc;
+}
+
+.control-group.error  > .controls .input-prepend .add-on, .control-group.error > .controls .input-append .add-on {
+  border-color: #b94a48;
+}
+
+
+legend {
+  padding-top: 40px;
+}
