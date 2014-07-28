@@ -1,3 +1,16 @@
+remove_file "app/assets/javascripts/application.js"
+remove_file "app/assets/stylesheets/application.css"
+remove_file ".gitignore"
+remove_file "db/seeds.rb"
+
+gsub_file 'config/application.rb', /(^|\n)\s*#[^\n]*/, ""
+gsub_file 'config/routes.rb', /(^|\n)\s*#[^\n]*/, ""
+gsub_file 'Gemfile', /(^|\n)\s*#[^\n]*/, ""
+gsub_file 'Gemfile', /(^|\n)(\s*\n+)/, "\n"
+
+insert_into_file "Gemfile", "ruby '2.0.0'\n", :after => "source 'https://rubygems.org'\n"
+comment_lines 'Gemfile', "gem 'turbolinks'"
+
 def source_paths
   [File.expand_path(File.dirname(__FILE__))]
 end
@@ -43,32 +56,32 @@ gem 'better_rails_admin', github: 'mcasimir/better_rails_admin'
 # =            Environments/Application            =
 # ================================================*/
 
-application do 
-<<-CODE
-  config.i18n.fallbacks = true
-  # config.time_zone = 'Europe/Rome'
-  config.i18n.default_locale = #{@langs_default_sym}
-  config.i18n.available_locales = #{@langs_arr_sym}
+application <<-CODE
+
+    config.i18n.fallbacks = true
+    # config.time_zone = 'Europe/Rome'
+    config.i18n.default_locale = #{@langs_default_sym}
+    config.i18n.available_locales = #{@langs_arr_sym}
 CODE
-end
 
 
-environment env: 'production' do
-<<-CODE
-config.action_mailer.default_url_options = { :host => '#{@host}' }
+production = <<-CODE
 
-ActionMailer::Base.smtp_settings = {
-  :port =>           '587',
-  :address =>        'smtp.mandrillapp.com',
-  :user_name =>      ENV['MANDRILL_USERNAME'],
-  :password =>       ENV['MANDRILL_APIKEY'],
-  :domain =>         'heroku.com',
-  :authentication => :plain
-}
-ActionMailer::Base.delivery_method = :smtp
+  config.action_mailer.default_url_options = { :host => '#{@host}' }
+
+  ActionMailer::Base.smtp_settings = {
+    :port =>           '587',
+    :address =>        'smtp.mandrillapp.com',
+    :user_name =>      ENV['MANDRILL_USERNAME'],
+    :password =>       ENV['MANDRILL_APIKEY'],
+    :domain =>         'heroku.com',
+    :authentication => :plain
+  }
+  ActionMailer::Base.delivery_method = :smtp
 
 CODE
-end
+
+environment production, env: 'production'
 
 # /*====================================
 # =            Configuration           =
@@ -99,8 +112,6 @@ route "mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'"
 route "mount Ckeditor::Engine => '/ckeditor'"
 route "devise_for :administrators"
 
-directory("templates")
-copy_file "_gitignore", '.gitignore'
-copy_file "_env", '.env'
-
-remove_file "app/assets/stylesheets/application.css"
+directory('templates', '.')
+copy_file '_gitignore', '.gitignore'
+copy_file '_env', '.env'
